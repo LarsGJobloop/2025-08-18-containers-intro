@@ -18,6 +18,19 @@
     Ctrl + C
     ```
 
+- Build a local container from a Dockerfile
+
+  ```sh
+  docker build --tag <some-name> .
+  ```
+
+  Example:
+  ```sh
+  docker build --tag dotnet-app .
+  docker run --rm dotnet-app
+  ```
+
+
 ## Sketches
 
 ![Sketch from lecture](/docs/sketches.excalidraw.png)
