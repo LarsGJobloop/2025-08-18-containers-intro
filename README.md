@@ -27,9 +27,8 @@
   Example:
   ```sh
   docker build --tag dotnet-app .
-  docker run --rm dotnet-app
+  docker run --rm --publish 8080:8080 dotnet-app
   ```
-
 
 ## Sketches
 
