@@ -12,6 +12,10 @@
     docker run --name some-nginx -p 8080:80 nginx
     ```
 
+## Sketches
+
+![Sketch from lecture](/docs/sketches.excalidraw.png)
+
 ## Reference
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
