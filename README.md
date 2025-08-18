@@ -30,3 +30,4 @@
 - Container Registry
   - [Docker Hub, default and primary](https://hub.docker.com/)
   - [GitHub Container Registry (GHCR)](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
+- [Containerize a .NET App](https://learn.microsoft.com/en-us/dotnet/core/docker/build-container?tabs=windows&pivots=dotnet-9-0)
