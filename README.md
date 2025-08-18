@@ -12,6 +12,12 @@
     docker run --name some-nginx -p 8080:80 nginx
     ```
 
+- Shut down a running process in the terminal (send a SIGINT signal)
+
+    ```sh
+    Ctrl + C
+    ```
+
 ## Sketches
 
 ![Sketch from lecture](/docs/sketches.excalidraw.png)
