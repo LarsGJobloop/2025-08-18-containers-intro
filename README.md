@@ -18,5 +18,9 @@
 
 ## Reference
 
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-- [OrbStack](https://www.docker.com/products/docker-desktop/)
+- Development Tools
+  - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+  - [OrbStack](https://www.docker.com/products/docker-desktop/)
+- Container Registry
+  - [Docker Hub, default and primary](https://hub.docker.com/)
+  - [GitHub Container Registry (GHCR)](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
