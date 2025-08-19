@@ -5,3 +5,11 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8080:8080
+
+  homepage:
+    build:
+      context: ./src/homepage
+      dockerfile: Dockerfile
+    ports:
+      # Use the host port ":" and map it to the container port
+      - 8081:80
