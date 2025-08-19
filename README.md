@@ -44,7 +44,8 @@
 
 ## Sketches
 
-![Sketch from lecture](/docs/sketches.excalidraw.png)
+![Container Introduction](/docs/sketches.excalidraw.png)
+![Docker Compose Application](/docs/compose-stack.excalidraw.png)
 
 ## Reference
 
