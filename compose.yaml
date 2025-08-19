@@ -1,15 +1,28 @@
 services:
+  ingress:
+    image: "traefik:v3.5"
+    command:
+      #- "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entryPoints.web.address=:80"
+    ports:
+      - "80:80" # Expose default web address
+      - "8080:8080" # Expose Traefik Admin UI
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+
   echo-service:
     build:
       context: ./src/echo-service
       dockerfile: Dockerfile
-    ports:
-      - 8080:8080
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.echo-service.rule=Host(`localhost`)"
+      - "traefik.http.routers.echo-service.entrypoints=web"
 
   homepage:
     build:
       context: ./src/homepage
       dockerfile: Dockerfile
-    ports:
-      # Use the host port ":" and map it to the container port
-      - 8081:80
