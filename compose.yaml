@@ -43,8 +43,24 @@ services:
       POSTGRES_PASSWORD: example
 
   # PostgreSQL Admin UI
+  # database-ui:
+  #   image: adminer
+  #   restart: always
+  #   ports:
+  #     - 8081:8080
+
+  # Another PostgreSQL Web UI (PGWeb), sleaker and simpler to navigate (not as expressive though)
   database-ui:
-    image: adminer
     restart: always
+    image: sosedoff/pgweb
+    # Bypass the ingress and expose directly to localhost/loopback
+    # Admin UIs are not usually exposed publicly, if deployed, and if they are they are tightly locked down
+    # This is purely for development purposes, to introspect the live database
     ports:
-      - 8081:8080
+      - "8081:8081"
+    environment:
+      # URL in form "postgres://<user-name>:<password>@<ip-address | domain-name>:<port>/<database>"
+      - DATABASE_URL=postgres://postgres:example@database:5432/postgres?sslmode=disable
+    # Don't start this before the actual database is up and running
+    depends_on:
+      - database
