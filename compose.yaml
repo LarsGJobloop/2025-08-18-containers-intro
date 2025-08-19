@@ -21,6 +21,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.echo-service.rule=Host(`localhost`)"
       - "traefik.http.routers.echo-service.entrypoints=web"
+      - "traefik.http.services.echo-service.loadbalancer.server.port=8080"
 
   homepage:
     build:
