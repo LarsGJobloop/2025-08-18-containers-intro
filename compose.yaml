@@ -19,7 +19,7 @@ services:
       dockerfile: Dockerfile
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.echo-service.rule=Host(`localhost`)"
+      - "traefik.http.routers.echo-service.rule=Host(`api.localhost`)" # This is the configuration for how to route trafic
       - "traefik.http.routers.echo-service.entrypoints=web"
       - "traefik.http.services.echo-service.loadbalancer.server.port=8080"
 
