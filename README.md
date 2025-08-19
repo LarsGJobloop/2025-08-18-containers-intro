@@ -30,6 +30,18 @@
   docker run --rm --publish 8080:8080 dotnet-app
   ```
 
+- Start a compose file (and rebuild images)
+
+  ```sh
+  docker compose up --build
+  ```
+
+- Clean up created compose resources
+
+  ```sh
+  docker compose down
+  ```
+
 ## Sketches
 
 ![Sketch from lecture](/docs/sketches.excalidraw.png)
