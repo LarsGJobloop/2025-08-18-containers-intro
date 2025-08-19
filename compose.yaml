@@ -1,0 +1,7 @@
+services:
+  echo-service:
+    build:
+      context: ./src/echo-service
+      dockerfile: Dockerfile
+    ports:
+      - 5000:5000
