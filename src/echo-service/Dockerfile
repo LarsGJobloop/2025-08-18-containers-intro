@@ -4,9 +4,9 @@ WORKDIR /App
 # Copy everything
 COPY . ./
 # Restore as distinct layers
-RUN dotnet restore src/Api
+RUN dotnet restore
 # Build and publish a release
-RUN dotnet publish src/Api --output out
+RUN dotnet publish --output out
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:9.0
