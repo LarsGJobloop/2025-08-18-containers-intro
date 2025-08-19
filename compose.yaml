@@ -27,3 +27,8 @@ services:
     build:
       context: ./src/homepage
       dockerfile: Dockerfile
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.homepage.rule=Host(`localhost`)" # This is the configuration for how to route trafic
+      - "traefik.http.routers.homepage.entrypoints=web"
+      - "traefik.http.services.homepage.loadbalancer.server.port=80"
