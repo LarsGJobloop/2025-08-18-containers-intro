@@ -1,3 +1,39 @@
+# Setup instructions
+
+1. Get an API key from Hetzner (LarsG, Jørgen, John)
+2. Generate a SSH key (command in [reference](#command-reference))
+3. Download Dependencies:
+
+    ```sh
+    terraform -chdir=infrastructure init
+    ````
+
+4. Apply configuration (note the returned IPv4 Address)
+
+    ```sh
+    terraform -chdir=infrastructure apply
+    ```
+
+5. Wait a minute, then visit the IP address
+
+  Available Services:
+  - \<ip>[:8080](): Traefik Dashboard
+  - \<ip>[:8081](): Database Admin UI
+
+## Debug server
+
+1. SSH into server
+
+  ```sh
+  ssh -i <path-to-identity-file> root@<ip>
+  ```
+2. View the logs under `/var/log`
+3. Use [journalctl](https://www.freedesktop.org/software/systemd/man/latest/journalctl.html) to view [systemd](https://systemd.io/) logs
+
+    ```sh
+    journalctl
+    ```
+
 ## Command reference
 
 - Verify docker is setup and the Container Runtime is running
