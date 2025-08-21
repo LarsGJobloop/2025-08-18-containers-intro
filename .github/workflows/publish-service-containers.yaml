@@ -6,6 +6,9 @@ on:
     branches: [
       main
     ]
+    # Only rerun if changes inside `/src` is detected
+    paths:
+      - 'src/**'
 
 env:
   # GitHub is case-insensitive, and have inconsistent casing in their API.
