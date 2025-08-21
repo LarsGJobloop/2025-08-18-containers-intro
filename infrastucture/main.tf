@@ -1,5 +1,5 @@
 module "compose_app" {
-  source = ""
+  source = "./compose-app"
 
   # Which compose file
   repository = "https://github.com/LarsGJobloop/2025-08-18-containers-intro.git"

@@ -4,3 +4,8 @@ obj
 # Ignore artefacts
 bin
 out
+
+# Ignore Terraform files
+.terraform
+*.tfvars
+*.tfstate*
