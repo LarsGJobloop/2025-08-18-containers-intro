@@ -4,11 +4,8 @@ on:
   workflow_dispatch: {} # Enable manual runs
   push:
     branches: [
-      mono-repo
+      main
     ]
-    paths:
-      - 'src/**'
-      - '.github/workflows/publish-containers.yaml'
 
 env:
   # GitHub is case-insensitive, and have inconsistent casing in their API.
@@ -17,7 +14,7 @@ env:
   # Repo link: https://github.com/LarsGJobloop/nix-devcontainer-example
   # Hardcoded to reduce inline bash scripting.
   REGISTRY: ghcr.io
-  IMAGE_PREFIX: ghcr.io/larsgjobloop/nix-devcontainer-example
+  IMAGE_PREFIX: ghcr.io/larsgjobloop/2025-08-18-containers-intro
 
 jobs:
   # This job is used to detect the changed services so we only build and push those.
@@ -40,7 +37,8 @@ jobs:
       with:
         # See docs for how to add more services. Needs folder refactoring.
         filters: |
-          todo-service: src/todo-service/**
+          echo-service: src/echo-service/**
+          homepage: src/homepage/**
 
   # This job is used to build and push the changes detected in the changes job.
   # The output from the changes job is used to create a matrix of services to build and push.
