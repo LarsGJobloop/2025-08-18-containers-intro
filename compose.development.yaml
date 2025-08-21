@@ -1,0 +1,41 @@
+services:
+  ingress:
+    image: "traefik:v3.5"
+    command:
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entryPoints.web.address=:80"
+    ports:
+      - "80:80" # Expose default web address
+      # https://doc.traefik.io/traefik/https/tls/
+      # - "443:443" # TLS port for HTTPS (needs a domain, DNS and ingress configured)
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+
+  echo-service:
+    image: ghcr.io/larsgjobloop/2025-08-18-containers-intro/echo-service:8d01099d67784ea5c563d01a82f017dee633ae64
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.echo-service.rule=PathPrefix(`/api`)" # Now routed via path
+      - "traefik.http.routers.echo-service.entrypoints=web"
+      - "traefik.http.services.echo-service.loadbalancer.server.port=8080"
+      # Strip the /api prefix so the echo-service sees plain "/"
+      - "traefik.http.middlewares.echo-strip.stripprefix.prefixes=/api"
+      - "traefik.http.routers.echo-service.middlewares=echo-strip"
+
+  homepage:
+    image: ghcr.io/larsgjobloop/2025-08-18-containers-intro/homepage:42d241e90ab5b2364494a92edbe3746d0f66338c
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.homepage.rule=PathPrefix(`/`)" # Default catch-all path
+      - "traefik.http.routers.homepage.entrypoints=web"
+      - "traefik.http.services.homepage.loadbalancer.server.port=80"
+
+  # Link: https://hub.docker.com/_/postgres
+  # PostgreSQL
+  database:
+    image: postgres
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_PASSWORD: example

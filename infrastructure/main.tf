@@ -14,7 +14,7 @@ module "compose_app" {
   # Which compose file
   compose_app_repo   = "https://github.com/LarsGJobloop/2025-08-18-containers-intro.git"
   compose_app_branch = "main"
-  compose_app_path   = "compose.yaml"
+  compose_app_path   = "compose.development.yaml"
 
   # Reconcillation configuration
   reconciliation_intervall = "1min"
