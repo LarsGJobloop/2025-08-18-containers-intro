@@ -21,6 +21,7 @@
           callback (
             import nixpkgs {
               inherit system;
+              config.allowUnfree = true;
             }
           )
         );
@@ -30,6 +31,7 @@
         default = pkgs.mkShell {
           packages = with pkgs; [
             dotnetCorePackages.sdk_9_0
+            terraform
           ];
         };
 
