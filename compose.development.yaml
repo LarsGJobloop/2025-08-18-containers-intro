@@ -13,7 +13,7 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
 
   echo-service:
-    image: ghcr.io/larsgjobloop/2025-08-18-containers-intro/echo-service:8d01099d67784ea5c563d01a82f017dee633ae64
+    image: ghcr.io/larsgjobloop/2025-08-18-containers-intro/echo-service:ca3a476192d9378179fe8a467beb295ddf84a379
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.echo-service.rule=PathPrefix(`/api`)" # Now routed via path
