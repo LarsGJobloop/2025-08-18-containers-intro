@@ -19,9 +19,12 @@ services:
       dockerfile: Dockerfile
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.echo-service.rule=Host(`api.localhost`)" # This is the configuration for how to route trafic
+      - "traefik.http.routers.echo-service.rule=PathPrefix(`/api`)" # Now routed via path
       - "traefik.http.routers.echo-service.entrypoints=web"
       - "traefik.http.services.echo-service.loadbalancer.server.port=8080"
+      # Strip the /api prefix so the echo-service sees plain "/"
+      - "traefik.http.middlewares.echo-strip.stripprefix.prefixes=/api"
+      - "traefik.http.routers.echo-service.middlewares=echo-strip"
 
   homepage:
     build:
@@ -29,7 +32,7 @@ services:
       dockerfile: Dockerfile
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.homepage.rule=Host(`0.0.0.0`)" # This is the configuration for how to route trafic
+      - "traefik.http.routers.homepage.rule=PathPrefix(`/`)" # Default catch-all path
       - "traefik.http.routers.homepage.entrypoints=web"
       - "traefik.http.services.homepage.loadbalancer.server.port=80"
 
