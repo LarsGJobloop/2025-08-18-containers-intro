@@ -22,3 +22,7 @@ module "compose_app" {
   # DEBUG
   ssh_key_id = hcloud_ssh_key.debug_key.id
 }
+
+output "app_ip" {
+  value = module.compose_app.server_ip
+}
