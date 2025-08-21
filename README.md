@@ -17,8 +17,24 @@
 5. Wait a minute, then visit the IP address
 
   Available Services:
-  - \<ip>[:8080](): Traefik Dashboard
-  - \<ip>[:8081](): Database Admin UI
+
+  - [\<ip>/](): Homepage app
+  - [\<ip>/api](): echo service
+
+## Local development
+
+1. Spin up the compose stack, visit [localhost](http://localhost)
+
+  ```sh
+  docker compose up --build
+  ```
+
+  Available Services:
+
+  - [localhost/](http://localhost/): Homepage app
+  - [localhost/api](http://localhost/api): echo service
+  - [localhost:8080/dashboard](localhost:8080/dashboard): Traefik Dashboard
+  - [localhost:8081](localhost:8081): Database Admin UI
 
 ## Debug server
 
