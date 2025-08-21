@@ -9,3 +9,7 @@ out
 .terraform
 *.tfvars
 *.tfstate*
+
+# Ignore local SSH keys
+ssh-identity
+ssh-identity.pub

@@ -1,0 +1,2 @@
+hcloud_token = "your api token for hetzner"
+debug_key    = "your local SSH public key"
